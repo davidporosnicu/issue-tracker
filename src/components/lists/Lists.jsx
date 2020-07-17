@@ -5,18 +5,16 @@ import { connect } from "react-redux";
 import AddList from "../add-list/AddList";
 import List from "../list/List";
 
-const Lists = ({ lists, selectedUser, users }) => {
+const Lists = ({ lists }) => {
   const { entries, ids } = lists;
-
-  if (!selectedUser) return "";
 
   return (
     <div className={styles.container}>
       <div className={styles.form}>
-        <AddList userId={selectedUser} />
+        <AddList />
       </div>
       <div className={styles.lists}>
-        {users[selectedUser].listIds.map(listId => {
+        {ids.map(listId => {
           return <List key={listId} data={entries[listId]} />;
         })}
       </div>
@@ -27,8 +25,6 @@ const Lists = ({ lists, selectedUser, users }) => {
 const mapStateToProps = state => {
   return {
     lists: state.lists,
-    users: state.users.entries,
-    selectedUser: state.users.selectedUser,
   };
 };
 

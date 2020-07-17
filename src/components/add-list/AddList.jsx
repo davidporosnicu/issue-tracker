@@ -6,7 +6,7 @@ import { createList } from "../../redux/list/lists.actions";
 import Input from "../generic/input/Input";
 import Button from "../generic/button/Button";
 
-const AddList = ({ createList, userId }) => {
+const AddList = ({ createList }) => {
   const [title, setTitle] = useState("");
 
   const onChange = e => {
@@ -15,7 +15,7 @@ const AddList = ({ createList, userId }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    createList(title, userId);
+    createList(title);
     setTitle("");
   };
 

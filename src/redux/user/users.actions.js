@@ -1,4 +1,4 @@
-import { ADD_USER, SELECT_USER, REMOVE_USER } from "./users.types";
+import { ADD_USER, REMOVE_USER } from "./users.types";
 
 export const createUser = userData => {
   const userId = Date.now().toString();
@@ -9,16 +9,8 @@ export const createUser = userData => {
       user: {
         id: parseInt(userId),
         name: userData.name,
-        listIds: [],
       },
     },
-  };
-};
-
-export const selectUser = userId => {
-  return {
-    type: SELECT_USER,
-    payload: { userId },
   };
 };
 

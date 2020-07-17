@@ -12,13 +12,7 @@ const Users = ({ users }) => {
       <div className={styles.hrLine} />
 
       {users.ids.map(id => {
-        return (
-          <User
-            key={id}
-            isSelected={users.selectedUser === id}
-            user={users.entries[id]}
-          />
-        );
+        return <User key={id} user={users.entries[id]} />;
       })}
     </div>
   );
