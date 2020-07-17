@@ -17,7 +17,6 @@ const listsReducer = (state = INITIAL_STATE, action) => {
     };
   }
   if (type === "ADD_CARD") {
-    console.log(payload);
     return {
       ...state,
       entries: {
@@ -25,6 +24,19 @@ const listsReducer = (state = INITIAL_STATE, action) => {
         [payload.listId]: {
           ...state.entries[payload.listId],
           cardIds: [...state.entries[payload.listId].cardIds, payload.card.id],
+        },
+      },
+    };
+  }
+
+  if (type === "UPDATE_CARD_LIST") {
+    return {
+      ...state,
+      entries: {
+        ...state.entries,
+        [payload.listId]: {
+          ...state.entries[payload.listId],
+          cardIds: payload.cardIds,
         },
       },
     };

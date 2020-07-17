@@ -5,15 +5,23 @@ const cardReducer = (
   },
   action
 ) => {
-  if (action.type === "ADD_CARD") {
-    console.log(action.payload);
+  const { type, payload } = action;
+
+  if (type === "ADD_CARD") {
     return {
       ...state,
       entries: {
         ...state.entries,
-        [action.payload.card.id]: action.payload.card,
+        [payload.card.id]: payload.card,
       },
-      ids: [...state.ids, action.payload.card.id],
+      ids: [...state.ids, payload.card.id],
+    };
+  }
+
+  if (type === "UPDATE_CARD_LIST") {
+    return {
+      ...state,
+      ids: payload.cardIds,
     };
   }
 
