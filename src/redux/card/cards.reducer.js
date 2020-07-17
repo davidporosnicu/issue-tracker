@@ -25,6 +25,19 @@ const cardReducer = (
     };
   }
 
+  if (type === "ASSIGN_USER") {
+    return {
+      ...state,
+      entries: {
+        ...state.entries,
+        [payload.cardId]: {
+          ...state.entries[payload.cardId],
+          assignedTo: payload.userId,
+        },
+      },
+    };
+  }
+
   return state;
 };
 
