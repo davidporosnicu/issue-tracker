@@ -1,0 +1,26 @@
+.user {
+  padding: 2rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  border: 1px solid #777;
+  border-radius: 4px;
+}
+
+.user:last-child {
+  margin-bottom: 0;
+}
+
+.active.user {
+  background-color: #ddd;
+}
+
+.name {
+  margin-bottom: 1rem;
+}
+
+.description {
+  margin-bottom: 2rem;
+}
