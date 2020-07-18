@@ -1,16 +1,12 @@
 import React from "react";
 import styles from "./Cards.module.css";
-import { connect } from "react-redux";
 
 import { Droppable } from "react-beautiful-dnd";
 
 import AddCard from "../add-card/AddCard";
 import Card from "../card/Card";
 
-const Cards = props => {
-  const { id: listId, cardIds } = props.listData;
-  const { cards } = props;
-
+const Cards = ({ listId, cardIds }) => {
   return (
     <div className={styles.container}>
       <AddCard listId={listId} />
@@ -23,7 +19,7 @@ const Cards = props => {
             className={styles.cards}
           >
             {cardIds.map((cardId, index) => (
-              <Card key={cardId} card={cards.entries[cardId]} index={index} />
+              <Card key={cardId} cardId={cardId} index={index} />
             ))}
             {provided.placeholder}
           </div>
@@ -33,8 +29,4 @@ const Cards = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return { cards: state.cards };
-};
-
-export default connect(mapStateToProps)(Cards);
+export default Cards;

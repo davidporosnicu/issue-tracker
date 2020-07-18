@@ -31,7 +31,6 @@ const SelectContainer = ({ card, users, assignUser }) => {
         classNamePrefix="products-categories-select"
         autoBlur={false}
         onChange={selectedOption => {
-          console.log(selectedOption);
           setSelectedUser(selectedOption);
         }}
       />

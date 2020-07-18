@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Lists.module.css";
 import { connect } from "react-redux";
+import { createSelector } from "reselect";
 import { updateCardPosition } from "../../redux/card/cards.actions";
 import { DragDropContext } from "react-beautiful-dnd";
 
@@ -8,8 +9,6 @@ import AddList from "../add-list/AddList";
 import List from "../list/List";
 
 const Lists = ({ lists, updateCardPosition }) => {
-  const { entries, ids } = lists;
-
   const onDragEnd = result => {
     const { destination, source, draggableId } = result;
     if (!destination) return;
@@ -45,8 +44,8 @@ const Lists = ({ lists, updateCardPosition }) => {
       </div>
       <DragDropContext onDragEnd={onDragEnd}>
         <div className={styles.lists}>
-          {ids.map(listId => {
-            return <List key={listId} data={entries[listId]} />;
+          {lists.ids.map(listId => {
+            return <List key={listId} listId={listId} />;
           })}
         </div>
       </DragDropContext>
@@ -54,9 +53,15 @@ const Lists = ({ lists, updateCardPosition }) => {
   );
 };
 
-const mapStateToProps = state => {
+const getListIds = lists => lists;
+
+const getLists = createSelector([getListIds], lists => {
+  return lists;
+});
+
+const mapStateToProps = ({ lists }) => {
   return {
-    lists: state.lists,
+    lists: getLists(lists),
   };
 };
 

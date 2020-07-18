@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Card.module.css";
+import { connect } from "react-redux";
 import { Draggable } from "react-beautiful-dnd";
 import Select from "../select/SelectContainer";
 
@@ -29,4 +30,10 @@ const Card = ({ card, index }) => {
   );
 };
 
-export default Card;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    card: state.cards.entries[ownProps.cardId],
+  };
+};
+
+export default connect(mapStateToProps)(Card);
