@@ -1,9 +1,9 @@
 .container {
-  width: 40rem;
+  min-width: 40rem;
   padding: 3rem 2rem;
   background-color: #eee;
   border-radius: 8px;
-  margin-right: 4rem;
+  margin-right: 3rem;
 }
 
 .title {

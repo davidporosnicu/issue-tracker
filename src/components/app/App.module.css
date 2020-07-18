@@ -2,4 +2,14 @@
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  background: linear-gradient(
+    45deg,
+    #ff9f1a,
+    #70b500,
+    #2acce5,
+    #0079bf,
+    #315989,
+    #c377e0
+  );
+  height: 100vh;
 }
